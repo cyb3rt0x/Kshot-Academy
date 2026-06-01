@@ -1,16 +1,12 @@
-# KSHOT Academy V4
+# KSHOT Academy V4.1
 
-This version focuses on launch readiness:
+Fixes in this version:
 
-- Simplified home navigation inspired by game menus.
-- Visible language selector at the top.
-- Search promoted as a primary feature.
-- Glossary promoted to main navigation.
-- Knowledge Base promoted to main navigation.
-- Start Here rewritten as friendly onboarding.
-- Alliance Guide included as a practical member guide.
-- Foundation Academy V1 included.
-- Advanced academies are present and marked 🚧 Under Construction.
+- Removed the duplicate middle `Change Your Language` block from the Home page.
+- Fixed the language selector so it can be changed repeatedly without reloading problems.
+- Added translations for the main UI: navigation, menu cards, buttons, headings, search dialog and under-construction labels.
+- Kept lesson/content text in English for now; the interface is ready for full content translation later.
+- Fixed missing header image path that could cause a broken image icon.
+- Kept Search, Glossary, Knowledge Base, Start Here and Academy as the main structure.
 
-## GitHub Pages
-Upload all files to the repository root and publish from `main` / `/root` in GitHub Pages.
+Upload all files and folders to the root of the GitHub repository, replacing the existing files.

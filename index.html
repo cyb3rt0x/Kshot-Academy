@@ -14,15 +14,15 @@
   <div class="site-shell">
     <header class="game-topbar">
       <a class="brand" href="#home" aria-label="KSHOT Academy Home">
-        <span class="brand-crest"><img src="assets/icons/foundation.svg" alt="" /></span>
+        <span class="brand-crest"><img src="assets/academy-king.svg" alt="" /></span>
         <span class="brand-text"><strong>KSHOT</strong><em>ACADEMY</em></span>
       </a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#start" data-route="start">Start Here</a>
-        <a href="#glossary" data-route="glossary">Glossary</a>
-        <a href="#knowledge" data-route="knowledge">Knowledge Base</a>
-        <a href="#academy" data-route="academy">Academy</a>
-        <a href="#alliance" data-route="alliance">Alliance Guide</a>
+        <a href="#start" data-route="start" data-i18n="navStart">Start Here</a>
+        <a href="#glossary" data-route="glossary" data-i18n="navGlossary">Glossary</a>
+        <a href="#knowledge" data-route="knowledge" data-i18n="navKnowledge">Knowledge Base</a>
+        <a href="#academy" data-route="academy" data-i18n="navAcademy">Academy</a>
+        <a href="#alliance" data-route="alliance" data-i18n="navAlliance">Alliance Guide</a>
       </nav>
       <div class="top-actions">
         <button class="game-icon-btn" id="openSearch" aria-label="Search">🔎</button>
@@ -34,10 +34,10 @@
     <main id="app"></main>
 
     <nav class="bottom-nav" aria-label="Mobile navigation">
-      <a href="#start"><span>📖</span><b>Start</b></a>
-      <a href="#glossary"><span>📚</span><b>Terms</b></a>
-      <a href="#knowledge"><span>❓</span><b>Answers</b></a>
-      <a href="#academy"><span>🎓</span><b>Academy</b></a>
+      <a href="#start"><span>📖</span><b data-i18n="bottomStart">Start</b></a>
+      <a href="#glossary"><span>📚</span><b data-i18n="bottomGlossary">Terms</b></a>
+      <a href="#knowledge"><span>❓</span><b data-i18n="bottomKnowledge">Answers</b></a>
+      <a href="#academy"><span>🎓</span><b data-i18n="bottomAcademy">Academy</b></a>
     </nav>
 
     <footer class="footer">
@@ -51,14 +51,15 @@
   <dialog id="searchDialog" class="search-dialog">
     <form method="dialog" class="search-panel">
       <button class="close" value="cancel" aria-label="Close search">×</button>
-      <h2>Search the Academy</h2>
-      <p class="search-hint">Try: Bear Hunt, VIP, R4, NAP, gems, rallies, technology, promotions.</p>
-      <input id="searchInput" placeholder="Search lessons, questions, terms..." autocomplete="off" />
+      <h2 data-i18n="searchTitle">Search the Academy</h2>
+      <p class="search-hint" data-i18n="searchHint">Try: Bear Hunt, VIP, R4, NAP, gems, rallies, technology, promotions.</p>
+      <input id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Search lessons, questions, terms..." autocomplete="off" />
       <div id="searchResults" class="search-results"></div>
     </form>
   </dialog>
 
   <script src="data.js"></script>
+  <script src="translations.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
