@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KSHOT Academy</title>
+  <meta name="description" content="KSHOT Academy — Learn systems, make better decisions, adapt faster." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="KSHOT Academy Home">
+        <div class="brand-icon">📖</div>
+        <div><strong>KSHOT</strong><span>ACADEMY</span></div>
+      </a>
+      <nav class="nav">
+        <a href="#home" data-route="home">Home</a>
+        <a href="#academies" data-route="academies">Academies</a>
+        <a href="#paths" data-route="paths">Paths</a>
+        <a href="#roadmap" data-route="roadmap">Roadmap</a>
+        <a href="#alliance-quick-start" data-route="lesson:alliance-quick-start">Alliance Guide</a>
+      </nav>
+      <button class="search-btn" id="openSearch" aria-label="Search">🔎</button>
+    </header>
+
+    <main id="app"></main>
+
+    <footer class="footer">
+      <span>🪙 Learn Continuously</span>
+      <span>⚙ Think in Systems</span>
+      <span>✅ Improve Consistently</span>
+      <span>🏰 Build Strong Organizations</span>
+      <span>👑 Create Lasting Value</span>
+    </footer>
+  </div>
+
+  <dialog id="searchDialog" class="search-dialog">
+    <form method="dialog" class="search-panel">
+      <button class="close" value="cancel">×</button>
+      <h2>Search the Academy</h2>
+      <input id="searchInput" placeholder="Search lessons, academies, topics..." autocomplete="off" />
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
