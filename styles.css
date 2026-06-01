@@ -15,11 +15,20 @@ a{color:inherit}.site-shell{max-width:1180px;margin:0 auto;min-height:100vh;back
 @media(max-width:900px){.nav{display:none}.game-topbar{gap:8px}.brand-crest{width:42px;height:42px}.brand-text strong{font-size:22px}.language-toggle span{max-width:80px;display:inline-block;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}.hero{grid-template-columns:1fr 92px;min-height:200px;padding:16px}.hero h1{font-size:42px}.hero p{font-size:16px}.king{width:90px}.menu-grid{grid-template-columns:repeat(2,1fr);gap:10px}.menu-card{min-height:112px;padding:12px}.grid-2,.grid-3,.term-grid,.faq-grid,.academy-grid{grid-template-columns:1fr}.language-strip{display:block}.search-home{margin-top:8px}.section-title,.page-title{font-size:30px}.bottom-nav{display:flex}.site-shell{padding-bottom:70px}#app{padding:10px}.content-card p,.lesson-body p{font-size:17px}}
 @media(max-width:420px){.hero{grid-template-columns:1fr}.hero-mascot{display:none}.menu-card h3{font-size:22px}.menu-icon{width:44px;height:44px}.top-actions{gap:4px}.game-icon-btn{width:38px}.language-toggle{font-size:12px;padding:8px}.brand-text em{font-size:10px}.search-home{display:grid}.search-home .kbtn{width:100%}}
 
-/* V4.3 visual polish */
-body{font-size:15px!important}
-#app{padding:8px!important}
-.page-title{font-size:26px!important}
-.section-title{font-size:22px!important}
-.brand-text strong{font-size:22px!important}
-p,li{font-size:15px!important;line-height:1.45!important}
-.panel{margin-bottom:10px!important}
+
+/* KSHOT Academy V4.4 UX Pass */
+.card,.academy-card,.kb-card,.menu-card{
+  padding:10px !important;
+  min-height:auto !important;
+  margin-bottom:8px !important;
+}
+.grid,.cards{
+  gap:8px !important;
+}
+.panel,section{
+  margin-bottom:8px !important;
+}
+.page-title{font-size:24px !important;}
+.section-title{font-size:18px !important;}
+p,li{font-size:15px !important;line-height:1.4 !important;}
+img{max-width:100%;height:auto;}
