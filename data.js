@@ -1,156 +1,113 @@
-const PATHS = [
-  { id: 'fighter', icon: '⚔️', title: 'Fighter', subtitle: 'Become stronger in battle.', body: 'You enjoy competition, combat, rallies, and testing your account. Your path focuses on combat systems, troops, reports, and event performance.' },
-  { id: 'rally-leader', icon: '📣', title: 'Rally Leader', subtitle: 'Lead rallies and multiply power.', body: 'You enjoy responsibility and optimization. Your path focuses on rally leadership, march capacity, combat stats, hero investment, and coordination.' },
-  { id: 'strategist', icon: '🧠', title: 'Strategist', subtitle: 'Understand systems and make smart decisions.', body: 'You enjoy planning and problem solving. Your path focuses on mechanics, reports, meta thinking, event systems, and long-term planning.' },
-  { id: 'builder', icon: '🏗️', title: 'Builder', subtitle: 'Develop people and support your alliance.', body: 'You enjoy helping others, teaching, and organizing knowledge. Your path focuses on community, member development, guides, and alliance health.' },
-  { id: 'leader', icon: '👑', title: 'Leader', subtitle: 'Help people succeed.', body: 'You enjoy organizing groups and accepting responsibility. Your path focuses on communication, trust, delegation, diplomacy, and kingdom-level thinking.' }
+const LANGUAGES = [
+  {code:'en',label:'English',dir:'ltr'},
+  {code:'zh',label:'中文',dir:'ltr'},
+  {code:'hi',label:'हिन्दी',dir:'ltr'},
+  {code:'es',label:'Español',dir:'ltr'},
+  {code:'fr',label:'Français',dir:'ltr'},
+  {code:'ar',label:'العربية',dir:'rtl'},
+  {code:'pt',label:'Português',dir:'ltr'}
 ];
 
-const PRINCIPLES = [
-  'Learn continuously.',
-  'Think in systems.',
-  'Make better decisions.',
-  'Adapt faster.',
-  'Build strong organizations.',
-  'Create lasting value.'
+const TERMS = [
+  ['Alliance','Your team and community inside Kingshot. A good alliance teaches, organizes events and helps you grow faster than playing alone.'],
+  ['Alliance Technology','A shared technology system. Contributions may look small, but hundreds of small contributions unlock bonuses for everyone.'],
+  ['Announcement','A message from leadership. It often includes event times, rules, strategy or important changes. Reading it prevents many problems.'],
+  ['Bear Hunt','A recurring alliance event where members work together to deal as much damage as possible. It teaches rallies, timing and teamwork.'],
+  ['Battle Report','A report showing what happened in combat. New players look at win or loss. Veterans look for why it happened.'],
+  ['Buff','A positive bonus that improves performance, such as attack, defense, health, production or speed.'],
+  ['Debuff','A negative effect that weakens an enemy or reduces effectiveness.'],
+  ['F2P','Free-To-Play. A player who chooses not to spend money. F2P players can still be valuable through activity, planning and consistency.'],
+  ['Gems','A premium currency. Spend them carefully. If a purchase will still feel good next week, it is probably worth considering.'],
+  ['Joiner','A player who joins a rally started by someone else. Good joiners are essential because without joiners, there is no rally.'],
+  ['KvK','Kingdom versus Kingdom. A large competitive event where entire kingdoms compete and preparation matters a lot.'],
+  ['NAP','Non-Aggression Pact. An agreement between alliances to avoid attacking each other. NAP5 or NAP10 usually refers to how many alliances are protected.'],
+  ['Power','A visible number representing account strength. Useful, but incomplete. Two players with similar power can perform very differently.'],
+  ['R4','Rank 4. Usually an officer who helps with communication, events, recruitment and member support.'],
+  ['R5','Rank 5. The alliance leader, responsible for direction, organization and final decisions.'],
+  ['Rally','A group attack led by one player and joined by others. It is one of the clearest examples of teamwork in Kingshot.'],
+  ['Rally Leader','The player who starts a rally. A good rally leader improves the performance of everyone joining.'],
+  ['Speedups','Items that reduce waiting time. Many players save them for events so the same action also earns rewards.'],
+  ['VIP','A long-term progression system with bonuses. It is not a shortcut, but it can create value over time.'],
+  ['Whale','A player who spends significant money. Whales may grow fast, but money does not replace experience or good decisions.'],
+  ['Fortress','A competitive alliance event focused on objectives, occupation and coordination.'],
+  ['Sunfire','A major kingdom-scale event where organization and roles matter as much as raw combat power.'],
+  ['Migration','Moving to another kingdom when the game rules allow it. A different kingdom can completely change the experience.'],
+  ['Territory','Area controlled by an alliance. Territory can affect strategy, objectives and alliance coordination.'],
+  ['Inactivity','When a player stops participating regularly. Alliances usually manage inactivity to protect active members.'],
+  ['Promotion','A rank increase. It should mean responsibility, not just status.'],
+  ['Builder','A player who strengthens the community by helping, teaching, organizing and supporting others.'],
+  ['Strategist','A player who studies systems, reports and patterns to help the group make better decisions.'],
+  ['Leadership Burnout','Exhaustion caused by carrying too much responsibility for too long. Delegation helps prevent it.'],
+  ['Glossary','This page. Use it when chat starts sounding like another language.']
 ];
 
-const LESSONS = {
-  'welcome-to-kingshot': {
-    title: 'Welcome To Kingshot', academy: 'Welcome Package', status: 'published', icon: '🎁',
-    summary: 'A short introduction for new players before they start chasing power.',
-    content: [
-      ['Why This Academy Exists', 'Kingshot can feel overwhelming at first. There are heroes, buildings, research trees, events, alliances, rallies, and kingdom politics. This Academy exists to help players understand the systems behind the game instead of memorizing temporary answers.'],
-      ['Your First Goal', 'Your first goal is not becoming powerful as quickly as possible. Your first goal is learning how the game works, joining an active alliance, participating consistently, and asking better questions. Power follows naturally when decisions improve.'],
-      ['The Academy Philosophy', 'We rarely say “use Hero X” as a permanent rule. Heroes change. Generations change. Events change. Systems remain. The goal is to teach you how to evaluate the next Hero X when it appears.'],
-      ['Key Lesson', 'Do not try to understand everything on day one. Learn, participate, ask questions, and grow with purpose.']
-    ]
-  },
-  'choose-your-path': {
-    title: 'Choose Your Path', academy: 'Welcome Package', status: 'published', icon: '🧭',
-    summary: 'The most important beginner decision: understand your role and available time.',
-    content: [
-      ['Why Paths Matter', 'Every player contributes differently. A kingdom needs fighters, rally leaders, strategists, builders, and leaders. Choosing a path does not limit you. It gives you direction.'],
-      ['The Fighter', 'You enjoy combat and competition. Your focus is becoming more effective in battle and helping your alliance through direct combat contribution.'],
-      ['The Rally Leader', 'You enjoy optimization and responsibility. Your focus is building strong rallies and multiplying alliance power.'],
-      ['The Strategist', 'You enjoy understanding systems. Your focus is planning, analysis, and helping others make better decisions.'],
-      ['The Builder', 'You enjoy helping people and strengthening communities. Your focus is education, onboarding, culture, and long-term alliance health.'],
-      ['The Leader', 'You enjoy organizing people and accepting responsibility. Your focus is alignment, communication, and helping groups achieve goals.'],
-      ['Important Truth', 'Your path can change. The purpose is not choosing perfectly. The purpose is choosing a direction and learning from it.']
-    ]
-  },
-  'alliance-quick-start': {
-    title: 'Alliance Quick Start Guide', academy: 'Welcome Package', status: 'published', icon: '🤝',
-    summary: 'The minimum expectations every useful alliance member should understand.',
-    content: [
-      ['Welcome', 'You do not need to be the strongest player to be valuable. You need to be active, respectful, reliable, and willing to learn.'],
-      ['Daily Expectations', 'Complete daily activities when possible. Contribute to alliance technology. Join rallies. Read alliance mail. Participate in events. Ask questions before guessing.'],
-      ['Alliance Technology', 'Alliance technology benefits everyone. Contributions are not optional decoration. They are one of the simplest ways to help the whole alliance grow.'],
-      ['Events', 'Participate even if you are not ranking high. Events teach mechanics, generate rewards, and build alliance habits. Participation creates progress.'],
-      ['Promotions', 'Promotion is not a reward. Promotion is responsibility. Officers need time, reliability, communication, and willingness to serve the alliance.'],
-      ['Inactivity', 'Real life comes first. If you need time away, communicate. Inactivity without communication hurts planning and may lead to replacement.'],
-      ['Respect The Kingdom', 'A strong alliance exists inside a kingdom. Avoid unnecessary conflicts, respect agreements, and remember that internal damage weakens everyone before KvK.']
-    ]
-  },
-  'academy-roadmap': {
-    title: 'Academy Roadmap', academy: 'Welcome Package', status: 'published', icon: '🗺️',
-    summary: 'How to navigate the Academy without getting overwhelmed.',
-    content: [
-      ['Recommended Order', 'Start with the Welcome Package. Then read Foundation Academy, Player Academy, Combat Academy, Hero Academy, Event Academy, Alliance Academy, Officer Playbook, Leadership Academy, Kingdom Academy, and Kingdom Builder.'],
-      ['Do Not Read Everything At Once', 'This is an Academy, not a single guide. Read what you need now, then return when your role grows.'],
-      ['Published And In Development Lessons', 'Some lessons are fully published. Others already have their page, structure, and planned topics, but are still being developed. This keeps the full roadmap visible from day one.']
-    ]
-  },
+const FAQS = [
+  {cat:'New Player', q:'Am I too late to start playing Kingshot?', a:'No. You may not catch the oldest or biggest spenders quickly, and that is fine. Your goal is not to beat the kingdom on day one. Your goal is to learn, join a good alliance and become more useful each week.'},
+  {cat:'New Player', q:'What should I focus on during my first days?', a:'Keep it simple: join an active alliance, read messages, participate in events, contribute to technology and ask questions. Do not try to optimize systems you do not understand yet.'},
+  {cat:'New Player', q:'I made a mistake. Should I restart?', a:'Usually no. Everyone spends something badly, upgrades something too early or misses an event. Most mistakes become small over time. The lesson is often more valuable than the lost resource.'},
+  {cat:'Alliance', q:'Why should I contribute to Alliance Technology?', a:'Because technology benefits everyone. Your click may look small, but when many members do it every day, the alliance unlocks upgrades that help the whole team.'},
+  {cat:'Alliance', q:'Why was I removed for inactivity?', a:'Active alliances need active members. If someone disappears without warning, leaders may need to make room. A quick message before time away can prevent misunderstandings.'},
+  {cat:'Alliance', q:'How are promotions usually decided?', a:'Power can help, but leaders usually notice reliability first: showing up, communicating, helping, participating and being easy to trust.'},
+  {cat:'Events', q:'Why do experienced players save speedups?', a:'Because many events reward actions they were already planning to do. Waiting for the right event can give both the upgrade and extra rewards.'},
+  {cat:'Events', q:'Do I need to rank high to benefit from events?', a:'No. Many events reward participation at different levels. You do not need to win to grow. Showing up consistently matters.'},
+  {cat:'Events', q:'Why is Bear Hunt important?', a:'It gives rewards and teaches teamwork, rally participation and timing. Even if your damage is low, participating helps you learn and grow.'},
+  {cat:'Resources', q:'Should I spend my gems right away?', a:'Usually not. Gems are flexible and valuable. Before spending, ask if the decision will still feel good next week.'},
+  {cat:'Resources', q:'Why am I always out of resources?', a:'Because growth consumes resources quickly. Start noticing where resources go: buildings, research, troops and heroes. Understanding flow helps you plan.'},
+  {cat:'Resources', q:'Why does progress feel slow sometimes?', a:'Because growth is not linear. Early progress is fast. Later, improvements take more planning. Slow progress is not failure.'},
+  {cat:'Combat', q:'Why do I lose against players with similar power?', a:'Power is only part of the story. Heroes, research, troop composition, buffs and technology can all change the result. Check the battle report.'},
+  {cat:'Combat', q:'What makes a hero good?', a:'Good for what? Some heroes are better for events, some for rallies, some for specific roles. Context matters more than popularity.'},
+  {cat:'Combat', q:'Should I upgrade every hero?', a:'Not equally. Hero resources are limited. Focus on heroes that support your goals and current stage of the game.'},
+  {cat:'Leadership', q:'What makes a good leader?', a:'Good leaders help more than they command. They communicate, organize, solve problems and make the game better for the people around them.'},
+  {cat:'Leadership', q:'Do I need a title to be a leader?', a:'No. Leadership often starts when a player helps others, answers questions and supports the group before any title appears.'},
+  {cat:'Kingdom', q:'What is NAP?', a:'NAP means Non-Aggression Pact. It is an agreement between alliances to reduce internal conflict. Rules vary by kingdom, so always check local rules.'},
+  {cat:'Spending', q:'Is Kingshot pay-to-win?', a:'Yes, spending can accelerate progress. But money does not replace experience, timing, participation or leadership.'},
+  {cat:'Spending', q:'Can free-to-play players be valuable?', a:'Absolutely. F2P players can become excellent joiners, organizers, teachers, strategists and leaders through consistency and good decisions.'}
+];
 
-  'understanding-interface': {
-    title: 'Understanding The Interface', academy: 'Foundation Academy', status: 'published', icon: '📱', summary: 'The interface is one of the most important learning tools in the game.',
-    content: [
-      ['The Interface Is Information', 'Many players treat the interface as decoration. This is a mistake. Kingshot places important information in menus, buttons, reports, event screens, mail, calendars, and icons.'],
-      ['Click Everything', 'Curious players learn faster. Open menus. Read descriptions. Check tooltips. Look at timers. The game teaches more than most players realize.'],
-      ['Main Areas To Watch', 'Top bar resources, power, VIP, mail, events, alliance menu, profile, calendar, reports, city panels, and mission screens. If something has a timer or red dot, it probably matters.'],
-      ['Key Lesson', 'The interface is not an obstacle. It is a learning tool.']
-    ]
-  },
-  'understanding-resources': {
-    title: 'Understanding Resources', academy: 'Foundation Academy', status: 'published', icon: '🍞', summary: 'Resources are tools, not trophies.',
-    content: [
-      ['Resources Are Stored Decisions', 'Food, wood, stone, iron, gold, gems, speedups, and shards represent future possibilities. Spending them decides which future you are building.'],
-      ['Timing Matters', 'Many events reward actions you already planned to do. Spending resources during the right event can create progress plus additional rewards.'],
-      ['Saving vs Hoarding', 'Saving is intentional. Hoarding is fear. Resources exist to be used, but they should be used when they create value.'],
-      ['Key Lesson', 'Do not ask only what to spend. Ask when spending creates the most value.']
-    ]
-  },
-  'understanding-buildings': { title: 'Understanding Buildings', academy: 'Foundation Academy', status: 'development', icon: '🏰', summary: 'Building functions, upgrade priorities, and city development planning.', topics: ['Economic buildings', 'Military buildings', 'Support buildings', 'Upgrade prioritization', 'Early, mid, and late game building logic'] },
-  'understanding-research': { title: 'Understanding Research', academy: 'Foundation Academy', status: 'development', icon: '📚', summary: 'How research creates long-term account strength.', topics: ['Research trees', 'Economic research', 'Military research', 'Growth research', 'How to prioritize research', 'Why research matters more than it seems'] },
-  'understanding-vip': { title: 'Understanding VIP', academy: 'Foundation Academy', status: 'development', icon: '💎', summary: 'How VIP benefits work and why long-term value matters.', topics: ['VIP progression', 'VIP benefits', 'Daily value', 'F2P and spender perspectives', 'When VIP investment matters'] },
-  'understanding-events-foundation': { title: 'Understanding Events', academy: 'Foundation Academy', status: 'published', icon: '🏆', summary: 'Events are not distractions from progression. They are progression.', content: [['Events Drive Progress', 'Events create rewards, learning opportunities, participation, and community interaction.'], ['Participation First', 'Perfect optimization is not required early. Show up, learn, improve, and optimize later.'], ['Key Lesson', 'Events are one of the main engines of growth.']] },
+const QUICK_START_SECTIONS = [
+  ['Welcome To Kingshot', `If you recently started playing Kingshot, there is a good chance you feel a little overwhelmed. That is normal. In the first days, the game looks simple: build, train, upgrade, unlock a hero, join an alliance. Then people start talking about Bear Hunt, rallies, Fortress, Sunfire, Technology, NAP, KvK, whales, R4 and R5. At some point almost every player asks: “What am I supposed to focus on?” For now, your goal is not to master the game. Your goal is to understand the next step.`],
+  ['Kingshot Is Bigger Than Your City', `When you start, everything seems to happen inside your city. Your buildings. Your troops. Your heroes. Your resources. After a while you notice something: the strongest players are usually inside strong alliances, and strong alliances are part of stronger kingdoms. Your account matters, but it is one piece of a much larger puzzle.`],
+  ['Do Not Worry About Playing Perfectly', `You are going to make mistakes. You will spend something too early, miss an event, invest in something you later regret or misunderstand a mechanic. Every veteran did the same. The goal is not avoiding every mistake. The goal is learning from them fast enough that they stop repeating.`],
+  ['What Kind Of Game Is Kingshot Really?', `At first it looks like a city-building game. Then you realize it is a game about decisions. Should you spend resources now or wait? Join this rally or save troops? Invest in this hero or wait? There is rarely a perfect answer. There is usually a better answer. Players who keep learning usually start making more of those.`],
+  ['Free-To-Play And Pay-To-Win', `Some players spend money. Some spend a lot. You may not catch the biggest spender in the kingdom, and that is okay. Money can accelerate progress. It cannot replace participation, reliability, experience or good judgment. Compare yourself to last week, not to the biggest whale.`],
+  ['Where Do You Fit In?', `Spend a few days inside an active alliance and you will notice that not everyone contributes the same way. Some love combat. Some organize events. Some answer questions. Some study reports. Some keep the community alive behind the scenes. You do not need to choose perfectly today. Just start noticing what kind of contribution feels natural.`],
+  ['Different Types Of Players', `Fighters enjoy combat. Rally Leaders help many players work together. Strategists study systems. Builders help people and culture. Leaders organize groups and solve problems. Most experienced players become a mix over time. These are not classes. They are starting directions.`],
+  ['Your First Week', `Find an active alliance. Participate in at least one event. Contribute to Alliance Technology. Ask at least one question. Read an alliance announcement. Learn a few terms from the Glossary. If you do those things, you already started better than many players who only chase power.`],
+  ['Common Beginner Mistakes', `Trying to catch whales. Spending everything immediately. Ignoring events because you feel weak. Never asking questions. Ignoring alliance messages. Thinking power is everything. Changing direction every few days. Forgetting that this is still a game. If you recognize yourself in one of these, relax. Most of us did it too.`],
+  ['Where To Go Next', `If game terms confuse you, open the Glossary. If you have a specific question, use the Knowledge Base or Search. If you want to learn the basics, go to Foundation Academy. If you just joined an alliance, read Alliance Guide. You do not need the whole Academy today. You need the next useful lesson.`]
+];
 
-  'understanding-progress': { title: 'Understanding Progress', academy: 'Player Academy', status: 'published', icon: '📈', summary: 'Movement is not the same as progress.', content: [['Movement Is Not Progress', 'Many players are busy but not improving. Progress means movement toward a meaningful objective.'], ['Measure Better', 'Ask whether you are learning, contributing more, improving performance, and making better decisions.'], ['Key Lesson', 'Progress is not doing more things. Progress is moving closer to meaningful goals.']] },
-  'growth-efficiency': { title: 'Understanding Growth Efficiency', academy: 'Player Academy', status: 'published', icon: '⚙️', summary: 'Efficient growth creates more value from the same resources.', content: [['Growth And Efficient Growth Are Different', 'Every active player grows. Efficient players create more progress from the same time and resources.'], ['Focus Creates Efficiency', 'Spreading resources everywhere creates average results. Focused growth creates compounding advantages.'], ['Key Lesson', 'Efficient progress is transformative.']] },
-  'account-identity': { title: 'Understanding Account Identity', academy: 'Player Academy', status: 'published', icon: '🛡️', summary: 'Strong accounts are built around purpose.', content: [['Every Account Tells A Story', 'Many accounts grow without direction. Mature accounts eventually develop an identity.'], ['Identity Examples', 'Rally leader, event specialist, support account, combat account, strategist, or leadership support.'], ['Key Lesson', 'Strong accounts are rarely built accidentally.']] },
-  'common-player-mistakes': { title: 'Common Beginner Mistakes', academy: 'Player Academy', status: 'development', icon: '⚠️', summary: 'The mistakes that cost new players weeks of progress.', topics: ['Spending too early', 'Ignoring events', 'Ignoring alliance technology', 'Upgrading everything equally', 'Comparing yourself to whales', 'Ignoring reports', 'Not asking questions'] },
+const ALLIANCE_GUIDE = [
+  ['Welcome To Alliance Life', `Joining an alliance changes Kingshot. Before, you were mostly building your own city. Now you are part of a team. Teams work differently. You do not need to know everything. You do need to participate, communicate and respect the people playing with you.`],
+  ['Read The Chat And Announcements', `You do not need to be online all day, but try to check what leadership is saying. Event times, strategy changes, rally calls and important rules often pass through chat or announcements. Missing information is one of the easiest ways to miss opportunities.`],
+  ['Contribute To Technology', `Technology looks small at first. A few clicks, a few numbers, nothing dramatic. But when many members contribute every day, the alliance unlocks bonuses that help everyone. This is one of the simplest ways to show you are helping build something bigger than your own account.`],
+  ['Participate Before You Feel Ready', `Many players wait until they are strong before joining events. Usually, it works the other way around: they become stronger because they participate. Join rallies. Try Bear Hunt. Ask what to send. Learn by doing.`],
+  ['Promotion Means Responsibility', `A promotion is not just a trophy. Officers help organize, communicate and solve problems. If you want to become R4 someday, start by becoming reliable. Show up, help, communicate and learn.`],
+  ['Real Life Comes First', `Work, family, school and health matter more than any event. The issue is usually not absence. The issue is silence. If you will be away, send a message when possible. It prevents many misunderstandings.`]
+];
 
-  'understanding-combat': { title: 'Understanding Combat', academy: 'Combat Academy', status: 'published', icon: '⚔️', summary: 'Combat is not a simple comparison of power.', content: [['Power Is A Measurement', 'Power summarizes progress. It does not explain effectiveness. Two similar accounts can perform very differently.'], ['Combat Is A System', 'Troops, heroes, research, equipment, alliance technology, buffs, formations, and objectives interact.'], ['Key Lesson', 'Before asking how to win more battles, learn how battles work.']] },
-  'combat-stats': { title: 'Understanding Combat Statistics', academy: 'Combat Academy', status: 'published', icon: '📊', summary: 'Attack, defense, health, lethality, and capacity explained as systems.', content: [['Attack', 'Attack improves offensive potential. It helps convert opportunities into damage.'], ['Health', 'Health improves survivability. Surviving troops keep contributing.'], ['Defense', 'Defense reduces vulnerability and improves durability over time.'], ['Lethality', 'Lethality is often highly valued in damage-focused contexts, but context matters.'], ['March Capacity', 'Capacity increases how many troops can contribute, multiplying the value of existing investments.'], ['Key Lesson', 'Evaluate stats by objective, not popularity.']] },
-  'combat-reports': { title: 'Reading Combat Reports', academy: 'Combat Academy', status: 'development', icon: '📜', summary: 'How to diagnose combat performance instead of only checking victory or defeat.', topics: ['Report sections', 'Key statistics', 'Understanding losses', 'Comparing reports', 'Finding weaknesses', 'Practical examples'] },
-  'troop-types': { title: 'Understanding Troop Types', academy: 'Combat Academy', status: 'development', icon: '🪖', summary: 'Troop roles, interactions, and composition logic.', topics: ['Infantry role', 'Marksman role', 'Rider role', 'Frontline and backline', 'Quantity vs quality', 'Promotion vs training'] },
-  'formations': { title: 'Understanding Formations', academy: 'Combat Academy', status: 'published', icon: '🧩', summary: 'A formation is a solution, not a recipe.', content: [['Most Players Copy Formations', 'Copying works until circumstances change. Understanding why a formation works is more valuable.'], ['Every Formation Has A Purpose', 'Bear Hunt, PvP, defense, reinforcement, and rally participation may require different priorities.'], ['Key Lesson', 'Do not ask what formation to copy. Ask what problem you are solving.']] },
-  'rally-systems': { title: 'Understanding Rally Systems', academy: 'Combat Academy', status: 'published', icon: '📣', summary: 'Rallies convert collective participation into collective power.', content: [['What Is A Rally?', 'A rally is a coordinated attack where multiple players combine forces to concentrate power.'], ['Leader And Joiners', 'The leader provides the foundation. Joiners provide scale. Both matter.'], ['Key Lesson', 'Rallies are systems, not just attacks.']] },
-  'reinforcements': { title: 'Understanding Reinforcements', academy: 'Combat Academy', status: 'published', icon: '🛡️', summary: 'Attacks create opportunities. Reinforcements protect them.', content: [['Not Every Battle Is Won Through Attack', 'Reinforcements become critical in Fortress, Sunfire, KvK, and defensive operations.'], ['Collective Defense', 'Supporting occupied positions demonstrates how organizations become stronger than individuals.'], ['Key Lesson', 'Capturing creates opportunities. Holding creates victories.']] },
-
-  'understanding-heroes': { title: 'Understanding Heroes', academy: 'Hero Academy', status: 'published', icon: '🦸', summary: 'Do not build heroes. Build a strategy.', content: [['Heroes Are Tools', 'A hero is valuable because of the role they perform, the skill they provide, and the objective they support.'], ['No Permanent Hero X', 'Hero names change. Functions endure.'], ['Key Lesson', 'The best hero is the one that supports your objective, fits your role, and works in your current generation.']] },
-  'hero-roles': { title: 'Understanding Hero Roles', academy: 'Hero Academy', status: 'published', icon: '🎭', summary: 'Heroes solve problems.', content: [['Common Roles', 'Damage, support, defensive, utility, hybrid, rally leader, rally joiner, PvE, and PvP roles.'], ['Evaluate Function', 'Do not evaluate heroes only by rarity or popularity. Ask what problem the hero solves.'], ['Key Lesson', 'Hero value begins with role.']] },
-  'hero-skills': { title: 'Understanding Hero Skills', academy: 'Hero Academy', status: 'published', icon: '✨', summary: 'Skills define heroes more than rarity does.', content: [['Reading Skills', 'Ask what the skill improves, who benefits, when it activates, and how reliable it is.'], ['Reliability', 'Reliable skills often outperform stronger but inconsistent skills over time.'], ['Key Lesson', 'Understanding skills is more important than memorizing rankings.']] },
-  'hero-investment': { title: 'Hero Investment Framework', academy: 'Hero Academy', status: 'published', icon: '💰', summary: 'Invest because a hero serves a purpose, not because they are available.', content: [['Opportunity Cost', 'Every fragment, book, and upgrade spent on one hero cannot be spent on another.'], ['Focus Principle', 'A few strong and useful heroes usually outperform many average heroes.'], ['Key Lesson', 'Hero investment should follow strategy, not excitement.']] },
-  'hero-generations': { title: 'Understanding Hero Generations', academy: 'Hero Academy', status: 'published', icon: '⏳', summary: 'Hero advice expires. Evaluation skills remain.', content: [['The Meta Changes', 'New generations introduce new heroes, skills, synergies, and replacements.'], ['Think In Roles', 'Do not ask if you have Hero X. Ask who performs that role in your generation.'], ['Key Lesson', 'Hero names change. Hero functions endure.']] },
-  'hero-synergy': { title: 'Hero Synergy Guide', academy: 'Hero Academy', status: 'development', icon: '🔗', summary: 'How heroes work together inside teams and marches.', topics: ['Complementary roles', 'Redundancy problems', 'Team construction', 'Support synergy', 'Event-specific synergy'] },
-
-  'event-overview': { title: 'Understanding Events', academy: 'Event Academy', status: 'published', icon: '🏆', summary: 'Events are accelerators.', content: [['Events Are Progression', 'Events create rewards, competition, participation, and learning.'], ['Different Events Teach Different Skills', 'Combat, coordination, planning, leadership, analysis, and resource timing.'], ['Key Lesson', 'Events are not distractions. They are progression.']] },
-  'event-preparation': { title: 'Event Preparation', academy: 'Event Academy', status: 'published', icon: '🧰', summary: 'Preparation creates performance.', content: [['Individual Preparation', 'Understand objectives, manage resources, review schedules, and plan participation.'], ['Alliance Preparation', 'Communicate, assign roles, set expectations, and reduce confusion.'], ['Key Lesson', 'Preparation often influences outcomes more than execution.']] },
-  'event-reports': { title: 'Event Reports', academy: 'Event Academy', status: 'published', icon: '📜', summary: 'Reports are educational tools disguised as statistics.', content: [['Reports Reveal Patterns', 'They show performance, participation, trends, and opportunities.'], ['Evidence Over Assumptions', 'Reports turn opinions into observations.'], ['Key Lesson', 'Reports are tools for improving future performance.']] },
-  'bear-hunt': { title: 'Bear Hunt: Understanding The Event', academy: 'Event Academy', status: 'published', icon: '🐻', summary: 'Bear Hunt is a rally classroom.', content: [['Why Bear Hunt Matters', 'Bear Hunt teaches rally mechanics, hero evaluation, coordination, participation, and report analysis.'], ['More Than Damage', 'Damage matters, but the learning value is even greater.'], ['Key Lesson', 'Bear Hunt is one of the best learning environments in the game.']] },
-  'bear-advanced': { title: 'Bear Hunt Advanced', academy: 'Event Academy', status: 'development', icon: '🔥', summary: 'Damage optimization, joiner value, rally analysis, and improvement cycles.', topics: ['Rally leader optimization', 'Joiner optimization', 'Expedition skill logic', 'Damage multipliers', 'Reading Bear reports', 'Alliance training program'] },
-  'fortress': { title: 'Fortress: Occupation And Defense', academy: 'Event Academy', status: 'published', icon: '🏯', summary: 'Fortress rewards organized alliances.', content: [['Objective', 'The objective is control, not random fighting.'], ['Occupation', 'Capturing creates an opportunity. Holding creates success.'], ['Key Lesson', 'Fortress teaches the skills needed for larger events.']] },
-  'sunfire': { title: 'Sunfire: Roles And Objectives', academy: 'Event Academy', status: 'published', icon: '🔥', summary: 'Sunfire rewards organization at scale.', content: [['Large Events Require Roles', 'Rally leaders, joiners, reinforcement players, communicators, and coordinators all matter.'], ['Strategic Objectives', 'Combat is not the objective. The objective guides combat.'], ['Key Lesson', 'Successful organizations value contribution over visibility.']] },
-  'kvk': { title: 'KvK: Kingdom Versus Kingdom', academy: 'Event Academy', status: 'published', icon: '🌍', summary: 'KvK is the event where systems matter most.', content: [['Ultimate Integration Event', 'KvK tests players, alliances, leadership, communication, preparation, and kingdom health.'], ['Starts Early', 'KvK preparation begins long before the event appears.'], ['Key Lesson', 'KvK does not create strengths and weaknesses. It reveals them.']] },
-  'kvk-advanced': { title: 'KvK Advanced Operations', academy: 'Event Academy', status: 'development', icon: '🗺️', summary: 'Preparation, territory, mobilization, morale, and recovery.', topics: ['Kingdom readiness', 'Mobilization', 'Territory control', 'Resource warfare', 'Morale', 'Recovery and post-KvK analysis'] },
-
-  'understanding-alliances': { title: 'Understanding Alliances', academy: 'Alliance Academy', status: 'published', icon: '🤝', summary: 'Strong alliances multiply power.', content: [['Alliance As Multiplier', 'An alliance provides rewards, protection, learning, coordination, and community.'], ['Participation Matters', 'You do not benefit from an alliance simply by being inside it. You benefit by participating.'], ['Key Lesson', 'The alliance is one of the greatest force multipliers in the game.']] },
-  'alliance-culture': { title: 'Understanding Alliance Culture', academy: 'Alliance Academy', status: 'published', icon: '🏕️', summary: 'Culture is the behavior that becomes normal.', content: [['Every Alliance Has Culture', 'Some cultures are intentional. Others emerge accidentally.'], ['Leadership Shapes Culture', 'Members imitate what leaders tolerate and repeat.'], ['Key Lesson', 'Strategies win events. Culture determines whether an alliance survives long enough to benefit from victories.']] },
-  'recruitment': { title: 'Recruitment Systems', academy: 'Alliance Academy', status: 'development', icon: '📣', summary: 'Recruitment is building future strength.', topics: ['Recruiting for activity', 'Recruiting for culture', 'Integration process', 'Recruitment pipeline', 'Quality vs quantity'] },
-  'retention': { title: 'Retention Strategy', academy: 'Alliance Academy', status: 'published', icon: '🧲', summary: 'Recruitment creates growth. Retention creates sustainability.', content: [['Why Retention Matters', 'Existing members already have relationships, knowledge, experience, and trust. Replacing them is expensive.'], ['Retention Drivers', 'Progress, belonging, purpose, respect, and community.'], ['Key Lesson', 'People stay where they find value.']] },
-  'promotions': { title: 'Promotion Systems', academy: 'Alliance Academy', status: 'published', icon: '⬆️', summary: 'Promotion is responsibility, not a reward.', content: [['Why Promotions Exist', 'Promotions exist because alliances need people to perform specific functions.'], ['Three Questions', 'Are they active? Are they reliable? Are they willing? Power alone is not enough.'], ['Key Lesson', 'Promotions should recognize responsibility, not status.']] },
-  'inactivity': { title: 'Inactivity Systems', academy: 'Alliance Academy', status: 'published', icon: '💤', summary: 'Inactivity management protects active players.', content: [['Not Punishment', 'The goal is not removing people. The goal is maintaining fairness and alliance health.'], ['Communication First', 'Real life happens. Communication prevents misunderstandings.'], ['Key Lesson', 'Managing inactivity protects the alliance future.']] },
-
-  'officer-mindset': { title: 'The Officer Mindset', academy: 'Officer Playbook', status: 'published', icon: '🧾', summary: 'Officer is not a rank change. It is a responsibility change.', content: [['Perspective Changes', 'Officers stop thinking only about themselves and begin thinking about the alliance.'], ['Core Responsibilities', 'People, systems, growth, communication, and event support.'], ['Key Lesson', 'Officers exist to serve the organization.']] },
-  'officer-duties': { title: 'Daily And Weekly Duties', academy: 'Officer Playbook', status: 'development', icon: '📋', summary: 'A practical checklist for R4 and officer operations.', topics: ['Daily communication', 'Event reminders', 'Activity checks', 'Member support', 'Weekly review', 'Escalation procedures'] },
-  'communication-standards': { title: 'Communication Standards', academy: 'Officer Playbook', status: 'published', icon: '💬', summary: 'Confusion is expensive. Communication reduces confusion.', content: [['Simplicity Rule', 'Clear communication outperforms complex communication.'], ['Repetition', 'Important information must be repeated because attention is limited.'], ['Key Lesson', 'Communication creates alignment.']] },
-
-  'leadership': { title: 'Understanding Leadership', academy: 'Leadership Academy', status: 'published', icon: '👑', summary: 'Leadership is responsibility, not reward.', content: [['Leadership Is Service', 'The purpose of leadership is helping others succeed.'], ['Delegation', 'No alliance should depend entirely on one person. Responsibility should be shared.'], ['Key Lesson', 'Leadership is not about having followers. It is about helping others succeed.']] },
-  'trust': { title: 'Building Trust', academy: 'Leadership Academy', status: 'published', icon: '🤝', summary: 'Trust is a strategic asset.', content: [['Trust Is Operational', 'Trust influences participation, communication, coordination, and retention.'], ['Built Slowly', 'Consistency, honesty, reliability, and support create credibility over time.'], ['Key Lesson', 'Power earns attention. Trust earns opportunities.']] },
-  'delegation': { title: 'Delegation', academy: 'Leadership Academy', status: 'published', icon: '📦', summary: 'Delegation creates resilience.', content: [['Doing Everything Is Not Leadership', 'When one leader does everything, the alliance becomes fragile.'], ['Development', 'People improve by doing. Delegation creates learning opportunities.'], ['Key Lesson', 'If everything depends on one leader, the alliance is weak.']] },
-  'burnout': { title: 'Burnout Prevention', academy: 'Leadership Academy', status: 'published', icon: '🕯️', summary: 'Burnout destroys more alliances than enemies.', content: [['Burnout Is A System Warning', 'Burnout often means responsibility is too centralized.'], ['Sustainable Leadership', 'Rest, support, delegation, and backup officers protect leadership health.'], ['Key Lesson', 'Burnout is not weakness. It is often a system failure.']] },
-
-  'kingdoms': { title: 'Understanding Kingdoms', academy: 'Kingdom Academy', status: 'published', icon: '🌍', summary: 'A kingdom is a living ecosystem.', content: [['Three Levels', 'Your city, your alliance, your kingdom. Most players understand the first. Fewer understand the third.'], ['Kingdom Health', 'Activity, retention, leadership, communication, cooperation, and stability matter more than raw power alone.'], ['Key Lesson', 'Strong alliances win battles. Strong kingdoms win wars.']] },
-  'kingdom-health': { title: 'Kingdom Health', academy: 'Kingdom Academy', status: 'published', icon: '❤️', summary: 'Power measures strength. Health measures sustainability.', content: [['Health Indicators', 'Activity, retention, leadership, communication, cooperation, and morale.'], ['Hidden Decline', 'A kingdom can still have high power while becoming unhealthy.'], ['Key Lesson', 'Healthy kingdoms retain players. Unhealthy kingdoms consume them.']] },
-  'diplomacy': { title: 'Diplomacy And Politics', academy: 'Kingdom Academy', status: 'published', icon: '🕊️', summary: 'Diplomacy protects long-term interests.', content: [['Politics Exists', 'Politics is how groups make decisions together. It exists whether players like it or not.'], ['NAP Purpose', 'NAP exists primarily for kingdom stability, not simply to protect powerful alliances.'], ['Key Lesson', 'Individual victories create moments. Political stability creates kingdoms.']] },
-  'kingdom-collapse': { title: 'Kingdom Collapse', academy: 'Kingdom Academy', status: 'published', icon: '⚠️', summary: 'Kingdoms rarely die suddenly.', content: [['Early Warning', 'Participation loss often appears before power loss.'], ['Collapse Cycle', 'Leadership drain, alliance collapse, recruitment difficulty, and internal conflict reinforce each other.'], ['Key Lesson', 'Kingdom collapse is usually many small problems left unresolved for too long.']] },
-
-  'kingdom-builder': { title: 'The Kingdom Builder', academy: 'Kingdom Builder', status: 'published', icon: '🏛️', summary: 'Build something worth being part of.', content: [['Why This Matters', 'Kingshot begins as a city-building game, but long-term success depends on people, communities, and systems.'], ['The Real Resource', 'Food, wood, stone, gold, heroes, and troops matter. People matter more.'], ['Final Lesson', 'Strong players build cities. Strong alliances build communities. Strong kingdoms build legacies.']] },
-  'legacy': { title: 'Legacy', academy: 'Kingdom Builder', status: 'published', icon: '🌟', summary: 'Power is temporary. Legacy lasts longest.', content: [['Everything Changes', 'Heroes, events, metas, rankings, and kingdoms change.'], ['What Remains', 'Knowledge, culture, leadership, and relationships outlast updates.'], ['Final Lesson', 'The greatest achievement is helping create something that remains valuable long after you are gone.']] }
-};
+const FOUNDATION_LESSONS = [
+  ['Opportunity Cost', `You saved resources for days and finally started a big upgrade. Two days later, an event begins that rewards exactly that upgrade. The upgrade was not wrong. The timing might have been. Opportunity Cost means every choice closes some doors while opening others.`],
+  ['Busy Is Not Always Progress', `Two players spend two hours online. One joins an event, contributes to technology and prepares for tomorrow. The other clicks around randomly. Both were active. Only one clearly moved forward.`],
+  ['Compounding', `A single contribution, one Bear Hunt or one lesson rarely changes everything. Repeated for months, those small actions become a completely different account. This is why consistent players often surprise everyone later.`],
+  ['Strategic Patience', `Sometimes waiting is not laziness. It is timing. Saving speedups for an event can turn one upgrade into one upgrade plus rewards. The goal is not waiting forever. The goal is spending at the right moment.`],
+  ['Participation', `Many players say, “I’ll participate when I’m stronger.” In Kingshot, the opposite often happens: you become stronger because you participate. Events give rewards, experience and confidence.`],
+  ['Reliability', `Every alliance remembers the player who always shows up. Maybe not the strongest. Maybe not an officer. But reliable. Power gets attention. Reliability earns trust.`],
+  ['Curiosity', `Some players learn faster because they ask why. Why did we lose? Why is this hero used? Why save speedups? Curiosity turns normal gameplay into training.`],
+  ['Power Is Not The Whole Story', `Power matters, but it does not explain everything. Two accounts can look similar and perform differently because of heroes, research, formation, buffs and knowledge.`],
+  ['The Value Of Reading', `Many answers are already inside the game: event pages, hero skills, reports, alliance mail and tooltips. Reading a few seconds can save days of confusion.`],
+  ['Community', `People often start for the game and stay for the community. The best alliances are not only strong. They feel alive, helpful and organized.`]
+];
 
 const ACADEMIES = [
-  { id:'foundation', title:'Foundation Academy', subtitle:'Learn the game fundamentals.', icon:'🏰', lessons:['welcome-to-kingshot','understanding-interface','understanding-resources','understanding-buildings','understanding-research','understanding-vip','understanding-events-foundation','understanding-alliances'] },
-  { id:'player', title:'Player Academy', subtitle:'Improve your daily gameplay.', icon:'🛡️', lessons:['choose-your-path','understanding-progress','growth-efficiency','account-identity','common-player-mistakes'] },
-  { id:'combat', title:'Combat Academy', subtitle:'Master battles and warfare.', icon:'⚔️', lessons:['understanding-combat','combat-stats','combat-reports','troop-types','formations','rally-systems','reinforcements'] },
-  { id:'hero', title:'Hero Academy', subtitle:'Understand heroes and synergies.', icon:'🦸', lessons:['understanding-heroes','hero-roles','hero-skills','hero-investment','hero-generations','hero-synergy'] },
-  { id:'event', title:'Event Academy', subtitle:'Dominate events and competitions.', icon:'🏆', lessons:['event-overview','event-preparation','event-reports','bear-hunt','bear-advanced','fortress','sunfire','kvk','kvk-advanced'] },
-  { id:'alliance', title:'Alliance Academy', subtitle:'Build strong alliances.', icon:'🤝', lessons:['alliance-quick-start','understanding-alliances','alliance-culture','retention','promotions','inactivity','recruitment'] },
-  { id:'officer', title:'Officer Playbook', subtitle:'Guides for officers and responsibilities.', icon:'📜', lessons:['officer-mindset','communication-standards','officer-duties'] },
-  { id:'leadership', title:'Leadership Academy', subtitle:'Develop leadership and management.', icon:'👑', lessons:['leadership','trust','delegation','burnout'] },
-  { id:'kingdom', title:'Kingdom Academy', subtitle:'Understand your kingdom.', icon:'🌍', lessons:['kingdoms','kingdom-health','diplomacy','kingdom-collapse'] },
-  { id:'builder', title:'Kingdom Builder', subtitle:'Build, expand, and leave your mark.', icon:'🏛️', lessons:['kingdom-builder','legacy'] }
+  ['foundation','Foundation Academy','Learn the basics that make everything else easier.','🏰',true],
+  ['player','Player Academy','Growth, habits, value and long-term account development.','📈',false],
+  ['combat','Combat Academy','Reports, troops, formations, rallies and battlefield thinking.','⚔️',false],
+  ['hero','Hero Academy','Roles, skills, investment, synergy and hero evaluation.','🦸',false],
+  ['event','Event Academy','Bear Hunt, Fortress, Sunfire, KvK and event preparation.','🏆',false],
+  ['alliance','Alliance Academy','Contribution, culture, recruitment, promotion and retention.','🤝',false],
+  ['officer','Officer Playbook','Daily duties, communication, event operations and member support.','📜',false],
+  ['leadership','Leadership Academy','Trust, delegation, burnout, decision quality and future leaders.','👑',false],
+  ['kingdom','Kingdom Academy','NAP, diplomacy, cooperation, kingdom health and conflict.','🌍',false],
+  ['builder','Kingdom Builder','Community, legacy and systems that last beyond one player.','🏛️',false]
 ];
-
-const QUICK_START = ['welcome-to-kingshot','choose-your-path','alliance-quick-start','academy-roadmap'];
