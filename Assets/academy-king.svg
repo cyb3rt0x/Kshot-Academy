@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 260">
+<defs><linearGradient id="cape" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#51d8e4"/><stop offset="1" stop-color="#238b98"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#3b2415" flood-opacity=".45"/></filter></defs>
+<g filter="url(#shadow)">
+<path d="M54 116c-18 28-25 74-21 118h154c5-47-2-88-22-118-22 23-88 23-111 0z" fill="url(#cape)" stroke="#4a2c19" stroke-width="8"/>
+<circle cx="110" cy="92" r="58" fill="#f3c28e" stroke="#4a2c19" stroke-width="8"/>
+<path d="M50 82c9-43 37-61 61-61 30 0 55 24 59 61-40-20-81-20-120 0z" fill="#70421f" stroke="#4a2c19" stroke-width="7"/>
+<path d="M62 49l16-32 22 26 15-34 19 34 24-26 12 35c-35 17-71 17-108-3z" fill="#f4c953" stroke="#4a2c19" stroke-width="7"/>
+<circle cx="100" cy="91" r="7" fill="#27170e"/><circle cx="130" cy="91" r="7" fill="#27170e"/>
+<path d="M91 122c13 14 28 14 41 0" fill="none" stroke="#4a2c19" stroke-width="7" stroke-linecap="round"/>
+<path d="M62 117c7 43 88 43 96 0-23 24-71 24-96 0z" fill="#70421f" opacity=".7"/>
+<rect x="75" y="163" width="70" height="42" rx="10" fill="#f4c953" stroke="#4a2c19" stroke-width="7"/>
+<text x="110" y="193" font-size="22" text-anchor="middle" font-family="Arial" font-weight="900" fill="#4a2c19">K</text>
+</g></svg>
