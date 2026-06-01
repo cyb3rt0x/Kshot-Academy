@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KSHOT Academy</title>
+  <meta name="description" content="KSHOT Academy — Start here, learn Kingshot, find terms, answers and academy lessons." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="game-topbar">
+      <a class="brand" href="#home" aria-label="KSHOT Academy Home">
+        <span class="brand-crest"><img src="assets/academy-king.svg" alt="" /></span>
+        <span class="brand-text"><strong>KSHOT</strong><em>ACADEMY</em></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#start" data-route="start" data-i18n="navStart">Start Here</a>
+        <a href="#glossary" data-route="glossary" data-i18n="navGlossary">Glossary</a>
+        <a href="#knowledge" data-route="knowledge" data-i18n="navKnowledge">Knowledge Base</a>
+        <a href="#academy" data-route="academy" data-i18n="navAcademy">Academy</a>
+        <a href="#alliance" data-route="alliance" data-i18n="navAlliance">Alliance Guide</a>
+      </nav>
+      <div class="top-actions">
+        <button class="game-icon-btn" id="openSearch" aria-label="Search">🔎</button>
+        <button class="language-toggle" id="languageToggle" aria-haspopup="true" aria-expanded="false">🌐 <span id="currentLang">English</span> ▾</button>
+        <div class="language-menu" id="languageMenu" hidden></div>
+      </div>
+    </header>
+
+    <main id="app"></main>
+
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+      <a href="#start"><span>📖</span><b data-i18n="bottomStart">Start</b></a>
+      <a href="#glossary"><span>📚</span><b data-i18n="bottomGlossary">Terms</b></a>
+      <a href="#knowledge"><span>❓</span><b data-i18n="bottomKnowledge">Answers</b></a>
+      <a href="#academy"><span>🎓</span><b data-i18n="bottomAcademy">Academy</b></a>
+    </nav>
+
+    <footer class="footer">
+      <span>📖 Start simple</span>
+      <span>🔎 Search fast</span>
+      <span>📚 Learn terms</span>
+      <span>🎓 Grow with purpose</span>
+    </footer>
+  </div>
+
+  <dialog id="searchDialog" class="search-dialog">
+    <form method="dialog" class="search-panel">
+      <button class="close" value="cancel" aria-label="Close search">×</button>
+      <h2 data-i18n="searchTitle">Search the Academy</h2>
+      <p class="search-hint" data-i18n="searchHint">Try: Bear Hunt, VIP, R4, NAP, gems, rallies, technology, promotions.</p>
+      <input id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Search lessons, questions, terms..." autocomplete="off" />
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="translations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
