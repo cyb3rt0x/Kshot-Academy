@@ -2,7 +2,7 @@ const $ = (s,root=document)=>root.querySelector(s);
 const app = $('#app');
 
 function panel(cls='', inner=''){ return `<section class="panel ${cls}">${inner}</section>`; }
-function setActive(route){ document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('active',a.dataset.route===route)); }
+function setActive(route){ document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('active',a.dataset.route===route)); document.querySelectorAll('.bottom-nav a').forEach(a=>{ const r=(a.getAttribute('href')||'').replace('#',''); a.classList.toggle('active', r===route); }); }
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
 
 function setLanguage(code){
@@ -18,7 +18,7 @@ function setLanguage(code){
 
 function home(){
   app.innerHTML = `
-    ${panel('hero', `<div><h1>KSHOT <span>ACADEMY</span></h1><p>${ui('homeIntro')}</p><div class="search-home"><input id="homeSearch" placeholder="${ui('searchPlaceholder')}"/><button class="kbtn gold" id="homeSearchBtn">${ui('searchButton')}</button></div></div><div class="hero-mascot"><img class="king" src="assets/academy-king.svg" alt="Academy King"/></div>`)}
+    ${panel('hero', `<div><h1>KSHOT <span>ACADEMY</span></h1><p>${ui('homeIntro')}</p><div class="search-home"><input id="homeSearch" placeholder="${ui('searchPlaceholder')}"/><button class="kbtn gold" id="homeSearchBtn">${ui('searchButton')}</button></div></div><div class="hero-mascot"><img class="king" src="Assets/academy-king.svg" alt="Academy King"/></div>`)}
     <div class="menu-grid">
       <a class="panel menu-card" href="#start"><div class="menu-icon">📖</div><h3>${ui('startHere')}</h3><p>${ui('startHereDesc')}</p></a>
       <a class="panel menu-card" href="#glossary"><div class="menu-icon">📚</div><h3>${ui('glossary')}</h3><p>${ui('glossaryDesc')}</p></a>
@@ -30,7 +30,7 @@ function home(){
   `;
   $('#homeSearchBtn')?.addEventListener('click',()=>openSearchWith($('#homeSearch').value));
   $('#homeSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter')openSearchWith(e.target.value)});
-  setActive('start');
+  setActive('home');
 }
 
 function start(){
@@ -90,7 +90,7 @@ function route(){
 }
 
 const dlg = $('#searchDialog'), searchInput=$('#searchInput'), searchResults=$('#searchResults');
-function openSearchWith(q=''){ dlg.showModal(); setTimeout(()=>{searchInput.focus();searchInput.value=q;renderSearch(q)},40); }
+function openSearchWith(q=''){ if(!dlg.open) dlg.showModal(); setTimeout(()=>{searchInput.focus();searchInput.value=q;renderSearch(q)},40); }
 $('#openSearch').addEventListener('click',()=>openSearchWith(''));
 function renderSearch(q){
   q = (q||'').toLowerCase().trim();

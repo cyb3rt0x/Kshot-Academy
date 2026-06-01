@@ -1,12 +1,12 @@
-# KSHOT Academy V4.1
+# KSHOT Academy V4.2
 
-Fixes in this version:
+Mobile and language stability fix.
 
-- Removed the duplicate middle `Change Your Language` block from the Home page.
-- Fixed the language selector so it can be changed repeatedly without reloading problems.
-- Added translations for the main UI: navigation, menu cards, buttons, headings, search dialog and under-construction labels.
-- Kept lesson/content text in English for now; the interface is ready for full content translation later.
-- Fixed missing header image path that could cause a broken image icon.
-- Kept Search, Glossary, Knowledge Base, Start Here and Academy as the main structure.
-
-Upload all files and folders to the root of the GitHub repository, replacing the existing files.
+Changes:
+- Fixed asset paths for GitHub Pages case-sensitive hosting.
+- Added lowercase assets fallback folder.
+- Removed oversized title treatment from content cards.
+- Reduced font sizes, button sizes, card heights and shadows.
+- Improved mobile grid and bottom navigation alignment.
+- Improved search dialog stability.
+- Language selector remains at top only.
