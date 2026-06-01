@@ -5,46 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KSHOT Academy</title>
   <meta name="description" content="KSHOT Academy — Learn systems, make better decisions, adapt faster." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Lilita+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="site-shell">
-    <header class="topbar">
+    <header class="game-topbar">
       <a class="brand" href="#home" aria-label="KSHOT Academy Home">
-        <div class="brand-icon">📖</div>
-        <div><strong>KSHOT</strong><span>ACADEMY</span></div>
+        <span class="brand-crest"><img src="assets/icons/foundation.svg" alt="" /></span>
+        <span class="brand-text"><strong>KSHOT</strong><em>ACADEMY</em></span>
       </a>
-      <nav class="nav">
+      <nav class="nav" aria-label="Main navigation">
         <a href="#home" data-route="home">Home</a>
         <a href="#academies" data-route="academies">Academies</a>
         <a href="#paths" data-route="paths">Paths</a>
+        <a href="#knowledge" data-route="knowledge">FAQ</a>
         <a href="#roadmap" data-route="roadmap">Roadmap</a>
-        <a href="#alliance-quick-start" data-route="lesson:alliance-quick-start">Alliance Guide</a>
       </nav>
-      <button class="search-btn" id="openSearch" aria-label="Search">🔎</button>
+      <div class="top-actions">
+        <button class="game-icon-btn" id="openSearch" aria-label="Search">🔎</button>
+        <button class="language-toggle" id="languageToggle" aria-haspopup="true" aria-expanded="false">🌐 <span id="currentLang">English</span> ▾</button>
+        <div class="language-menu" id="languageMenu" hidden></div>
+      </div>
     </header>
 
     <main id="app"></main>
 
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+      <a href="#home"><span>🏠</span><b>Home</b></a>
+      <a href="#academies"><span>📚</span><b>Academy</b></a>
+      <a href="#knowledge"><span>❓</span><b>FAQ</b></a>
+      <a href="#roadmap"><span>🗺️</span><b>Roadmap</b></a>
+    </nav>
+
     <footer class="footer">
-      <span>🪙 Learn Continuously</span>
+      <span>📘 Learn Continuously</span>
       <span>⚙ Think in Systems</span>
       <span>✅ Improve Consistently</span>
-      <span>🏰 Build Strong Organizations</span>
       <span>👑 Create Lasting Value</span>
     </footer>
   </div>
 
   <dialog id="searchDialog" class="search-dialog">
     <form method="dialog" class="search-panel">
-      <button class="close" value="cancel">×</button>
+      <button class="close" value="cancel" aria-label="Close search">×</button>
       <h2>Search the Academy</h2>
-      <input id="searchInput" placeholder="Search lessons, academies, topics..." autocomplete="off" />
+      <p class="search-hint">Try: Bear Hunt, VIP, rallies, best hero, technology, promotions.</p>
+      <input id="searchInput" placeholder="Search lessons, FAQs, academies..." autocomplete="off" />
       <div id="searchResults" class="search-results"></div>
     </form>
   </dialog>
 
   <script src="data.js"></script>
+  <script src="translations.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
